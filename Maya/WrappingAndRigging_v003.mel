@@ -28,7 +28,8 @@ rotate -r -os -fo 3.590451 0 0 ;
 select -r baked_new_topology:Mesh ;
 
 python("from maya import cmds;import maya.api.OpenMaya as om;import os;execfile('D:\\Persona\\Maya\\metahuman_rig_transfer-python-2\\combined_MH.py')");
-
+//python("from maya import cmds;import maya.api.OpenMaya as om;import os;exec(open('D:\\Persona\\Maya\\metahuman_rig_transfer-python-2\\combined_MH.py').read())");
+//exec(open('D:\\Persona\\Maya\\metahuman_rig_transfer-python-2\\combined_MH.py').read())
 select -r DHIhead:spine_04 ;
 select -tgl baked_new_topology:Mesh ;
 
@@ -124,5 +125,5 @@ window -e -vis 0 pluginManagerWindow;
 //file -f -new;
 //python(import os; os.system("taskkill /PID %s /F" % os.getpid()))
 //evalDeferred "quit -f"
-evalDeferred "quit -f";
-quit -f;
+//evalDeferred "quit -f";
+//quit -f;

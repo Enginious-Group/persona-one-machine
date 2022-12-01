@@ -47,7 +47,7 @@ def not_unreal_actions():
     if os.path.exists(topologypath):
         os.remove(topologypath)
     
-    os.system("start /wait cmd /c py D:\\Persona\\UE\\Persona\\Plugins\\personaml\\Source\\python\\mainexternal.py")
+    os.system(r'start /wait cmd /c py D:\\Persona\\UE\\Persona\\Plugins\\personaml\\Source\\python\\client.py -ip "127.0.0.1" -c "D:\Persona\FBX"')
 
 fbxFilePath = 'D:/Persona/FBX/wrappedHead_v001.fbx'
 

@@ -8,9 +8,11 @@ source generateChannelMenu.mel;
 PluginManager;
 pluginWin;
 
-waitCursor -state on;										 $gIgnoreUpdateCallback = true;loadPluginCmd( "C:/Program Files/Autodesk/Maya2020/plug-ins/fbx/plug-ins/fbxmaya.mll"); 		   updatePluginUI( "0" );waitCursor -state off;									   $gIgnoreUpdateCallback = false;
-loadPluginLanguageResources( "fbxmaya", "plug-ins/fbxmaya.pres.mel");
-pluginInfo -q -path "fbxmaya";
+//waitCursor -state on;										 $gIgnoreUpdateCallback = true;loadPluginCmd( "C:/Program Files/Autodesk/Maya2020/plug-ins/fbx/plug-ins/fbxmaya.mll"); 		   updatePluginUI( "0" );waitCursor -state off;									   $gIgnoreUpdateCallback = false;
+//loadPluginLanguageResources( "fbxmaya", "plug-ins/fbxmaya.pres.mel");
+loadPlugin "fbxmaya.mll";
+loadPlugin "gameFbxExporter.mll";
+//pluginInfo -q -path "fbxmaya";
 
 waitCursor -state on;										 $gIgnoreUpdateCallback = true;loadPluginCmd( "C:/Program Files/Autodesk/Maya2020/bin/plug-ins/gameFbxExporter.mll"); 		   updatePluginUI( "0" );waitCursor -state off;									   $gIgnoreUpdateCallback = false;
 gameFbxExporterInitStrings;
@@ -20,10 +22,17 @@ pluginInfo -query -loaded fbxmaya;
 file -import -type "OBJ"  -ignoreVersion -ra true -mergeNamespacesOnClash false -namespace "baked_new_topology"  -pr  -importFrameRate true  -importTimeRange "override" "D:/Persona/Maya/Input/baked_new_topology.obj";
 select -r baked_new_topology:Mesh ;
 
-move -r 0 0 161.35 ;
-rotate -r -os -fo 90 0 0 ;
-move -r 0 -6 0 ;
-rotate -r -os -fo 3.590451 0 0 ;
+//move -r 0 0 161.35 ;
+//rotate -r -os -fo 90 0 0 ;
+//move -r 0 -6 0 ;
+//rotate -r -os -fo 3.590451 0 0 ;
+//move -r 0.202022 2.66411245 3.743746 ;
+setAttr "baked_new_topology:Mesh.translateX" 0.275;
+setAttr "baked_new_topology:Mesh.translateY" -3.506;
+setAttr "baked_new_topology:Mesh.translateZ" 164.420;
+setAttr "baked_new_topology:Mesh.rotateX" 90.000;
+
+
 
 select -r baked_new_topology:Mesh ;
 
@@ -76,6 +85,13 @@ delete ADL_DHIheadFACIAL_L_Eye_translateZ;
 select -r DHIhead:FACIAL_L_Eye ;
 select -add DHIhead:FACIAL_R_Eye ;
 move -r 0 0.3 0 ;
+
+select -cl ;
+
+//select -r baked_new_topology:Mesh ;
+//move -r 0 2.57891255 3.87181 ;
+
+select -cl ;
 //////////////////////
 //select -r baked_new_topology:Mesh ;
 //currentTime 500 ;
@@ -125,5 +141,5 @@ window -e -vis 0 pluginManagerWindow;
 //file -f -new;
 //python(import os; os.system("taskkill /PID %s /F" % os.getpid()))
 //evalDeferred "quit -f"
-//evalDeferred "quit -f";
-//quit -f;
+evalDeferred "quit -f";
+quit -f;
